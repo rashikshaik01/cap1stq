@@ -1,0 +1,113 @@
+###Get the service document
+http://localhost:4004/odata/v4/employeeService
+
+###Get service metadata document
+http://localhost:4004/odata/v4/employeeService/$metadata
+ 
+###Get all Employees Data
+http://localhost:4004/odata/v4/employeeService/EmployeeSet
+
+###GET The Data of the employee whose name start with 'S'
+http://localhost:4004/odata/v4/employeeService/EmployeeSet?$filter=startswith(nameFirst, 'S')
+
+###Get the top 2 employees, use orderby salaryAmount
+http://localhost:4004/odata/v4/employeeService/EmployeeSet?$orderby=salaryAmount desc&$top=2
+
+###CREATE an employee with salary <50000 & currency code USD.
+POST http://localhost:4004/odata/v4/employeeService/EmployeeSet
+Content-Type: application/json
+
+{
+  "nameFirst": "Charith",
+  "nameMiddle": "V",
+  "nameLast": "Varma",
+  "nameInitials": "VCV",
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "+918555915732",
+  "email": "Charith01@gmail.com",
+  "loginName": "charith.v",
+  "currency_code": "USD",
+  "salaryAmount": 7865,
+  "accountNumber": "32109876",
+  "bankId": "45499345",
+  "bankName": "My Bank of India"
+}
+
+###CREATE an employee with salary >50000 & currency code USD.
+POST http://localhost:4004/odata/v4/employeeService/EmployeeSet
+Content-Type: application/json
+
+{
+  "nameFirst": "Mahindra",
+  "nameMiddle": "Singh",
+  "nameLast": "Dhoni",
+  "nameInitials": "MSD",
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "+9187102776344",
+  "email": "captain.dhoni@gmail.com",
+  "loginName": "THALA",
+  "currency_code": "USD",
+  "salaryAmount": 56000,
+  "accountNumber": "32109876",
+  "bankId": "45499345",
+  "bankName": "My Bank of Europe"
+}
+
+###CREATE an employee with salary <50000 & currency code EUR.
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "Marlon",
+  "nameMiddle": "M",
+  "nameLast": "Samuels",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "+918810504111",
+  "email": "marlon.samuels@gmail.com",
+  "loginName": "MARLRL",
+  "Currency_code": "EUR",
+  "salaryAmount": 6395,
+  "accountNumber": "32109879",
+  "bankId": "66665556",
+  "bankName": "My Bank of London"
+}
+ 
+###UPDATE an employee by keeping the nameFirst and loginName intact.
+PATCH http://localhost:4004/odata/v4/employeeService/employeesSet/76a398a8-9d53-4904-947e-851c5314cf15
+Content-Type: application/json
+ 
+{
+  "nameFirst": "CHARITH",
+  "nameMiddle": null,
+  "nameLast": "Vuyyuri",
+  "nameInitials": null,
+  "Gender": "M",
+  "language": "E",
+  "loginName": "vuyyri",
+  "phoneNumber": "+918179252690"
+}
+ 
+### UPDATING EMPLOYEE BY CHANGING LOGIN NAME
+PATCH http://localhost:4004/odata/v4/employeeService/employeesSet/76a398a8-9d53-4904-947e-851c5314cf15
+Content-Type: application/json
+ 
+{
+  "nameFirst": "CHARITH",
+  "nameMiddle": null,
+  "nameLast": "Vuyyuri",
+  "nameInitials": null,
+  "Gender": "M",
+  "language": "E",
+  "loginName": "vuyyri",
+  "phoneNumber": "+918179252690"
+}
+ 
+###DElete employee data - DELETE
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/9287d119-a012-40ef-9b2c-3deafbea5eaa
+ 
+###DElete employee data - DELETE-2
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/bf5bd6db-3f88-4d2e-b8dc-a6d7645221c1
